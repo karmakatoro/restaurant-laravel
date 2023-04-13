@@ -1,7 +1,8 @@
 <?php
 
-// use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('posts', [PostController::class])->except('index');
+
+Route::get('/', [PostController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
