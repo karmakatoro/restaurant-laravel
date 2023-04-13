@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('posts', [PostController::class])->except('index');
-
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::resource('posts', PostController::class)->except('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
