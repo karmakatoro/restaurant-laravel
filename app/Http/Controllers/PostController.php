@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Request;
 
 class PostController extends Controller
 {
@@ -37,8 +38,9 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
+
         $imageName = $request->image->store('posts');
         Post::create([
             'title' => $request->title,

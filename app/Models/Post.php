@@ -10,9 +10,10 @@ class Post extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public static function boot(){
+    public static function boot()
+    {
         parent::boot();
-        self::creating(function($post){
+        self::creating(function ($post) {
             $post->user()->associate(auth()->user()->id);
             $post->category()->associate(request()->category);
         });
@@ -23,7 +24,7 @@ class Post extends Model
     }
     public function category()
     {
-       return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
     public function getTitleAttribute($attribute)
     {
