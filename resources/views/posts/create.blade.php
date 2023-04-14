@@ -5,8 +5,13 @@
         </h2>
     </x-slot>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10">
-        <form class="w-full max-w-lg">
+    <div class="flex flex-col justify-between">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10 ">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-3">
+                Ajouter un post
+            </h2>
+        <form class="w-full max-w-lg" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+            @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="title">
@@ -45,10 +50,12 @@
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="image" id="image" type="file">
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="submit" type="submit">
+                    <input class="appearance-none block w-full bg-indigo-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value="Ajouter post" name="submit" type="submit">
                 </div>
             </div>
         </form>
 
     </div>
+    </div>
+
 </x-app-layout>
