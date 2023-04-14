@@ -39,7 +39,13 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $imageName = $request->image->store('posts');
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'image' => $imageName
+        ]);
+        return redirect()->route('dashboard')->with('success', 'Votre post a ete cree');
     }
 
     /**

@@ -10,7 +10,12 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-3">
                 Ajouter un post
             </h2>
-        <form class="w-full max-w-lg" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+            <div class="my-5">
+                @foreach ($errors->all() as $error)
+                    <span class="block text-red-500">{{ $error }}</span>
+                @endforeach
+            </div>
+        <form class="w-full max-w-lg" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -50,11 +55,10 @@
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="image" id="image" type="file">
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <input class="appearance-none block w-full bg-indigo-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value="Ajouter post" name="submit" type="submit">
+                    <button type="submit" class="appearance-none block w-full bg-indigo-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">Ajouter</button>
                 </div>
             </div>
         </form>
-
     </div>
     </div>
 
