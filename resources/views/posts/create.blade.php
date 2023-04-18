@@ -10,9 +10,11 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-3">
                 Ajouter un post
             </h2>
-            <div class="my-5">
-
+            @if(session()->has('success'))
+            <div class="my-5 bg-green-700">
+                <h5>{{ session()->get('success') }}</h5>
             </div>
+            @endif
             <form class="w-full max-w-lg" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
