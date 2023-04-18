@@ -31,7 +31,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <a href="#" class="text-2xl font-bold text-gray-700 hover:underline">Build
+                                    <a href="#" class="text-2xl font-bold text-gray-700 hover:underline">
                                         {{ $post->title }}
                                     </a>
                                     <p class="mt-2 text-gray-600">
