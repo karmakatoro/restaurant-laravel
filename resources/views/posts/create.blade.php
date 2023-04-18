@@ -11,8 +11,8 @@
                 Ajouter un post
             </h2>
             @if(session()->has('success'))
-            <div class="my-5 bg-green-700">
-                <h5>{{ session()->get('success') }}</h5>
+            <div class="my-5">
+                <h5 class="text-green-500 text-xs italic">{{ session()->get('success') }}</h5>
             </div>
             @endif
             <form class="w-full max-w-lg" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">

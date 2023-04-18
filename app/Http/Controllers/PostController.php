@@ -47,7 +47,7 @@ class PostController extends Controller
             'content' => $request->content,
             'image' => $imageName
         ]);
-        return redirect()->route('dashboard')->with('success', 'Votre post a ete cree');
+        return redirect()->route('posts.create')->with('success', 'Votre post a ete cree');
     }
 
     /**
