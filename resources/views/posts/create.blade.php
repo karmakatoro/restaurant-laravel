@@ -4,14 +4,14 @@
             {{ __('Creer un post') }}
         </h2>
     </x-slot>
-
+{{--
     <form action="{{ route("posts.store") }}" method="post">
         @csrf
         <input type="text" name="title">
         <button type="submit">Envoyer</button>
-    </form>
+    </form> --}}
 
-    {{-- <div class="flex flex-col justify-between">
+    <div class="flex flex-col justify-between">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10 ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-3">
                 Ajouter un post
@@ -63,6 +63,6 @@
                 </div>
             </form>
         </div>
-    </div> --}}
+    </div>
 
 </x-app-layout>
