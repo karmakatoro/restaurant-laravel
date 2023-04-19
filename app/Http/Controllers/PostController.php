@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request;
 
 class PostController extends Controller
@@ -69,6 +70,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if(Gate::denies('update-post', $post)){
+            abort('403');
+        }
         $categories = Category::all();
         return view('posts.edit', compact('post', 'categories'));
     }
@@ -106,6 +110,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if(Gate::denies('destroy-post', $post)){
+            abort('403');
+        }
+        $post->delete();
+        return redirect()->route('dashboard')->with('success', 'Votre post a ete supprimee');
     }
 }
