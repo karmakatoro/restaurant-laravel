@@ -113,6 +113,7 @@ class PostController extends Controller
         if(Gate::denies('destroy-post', $post)){
             abort('403');
         }
+
         $post->delete();
         return redirect()->route('dashboard')->with('success', 'Votre post a ete supprimee');
     }
