@@ -23,6 +23,14 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
+        // if you use the same store request file
+        // the imageRule variable, you'll pass it in the return array
+        // if(request()->routeIs('posts.store')){
+        //     $imageRule = 'image|required';
+        // }elseif (request()->routeIs('posts.update')) {
+        //     $imageRule = 'image|sometimes';
+        // }
+
         return [
             'title' => 'required',
             'category' => 'required',
@@ -30,4 +38,11 @@ class StorePostRequest extends FormRequest
             'image' => 'image|required'
         ];
     }
+    // check is image is required or not
+    // it may be the same with the image rule validation
+    // protected function prepareValidation(){
+    //     if($this->image == null){
+    //         $this->request->remove('image');
+    //     }
+    // }
 }

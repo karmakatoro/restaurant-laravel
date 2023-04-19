@@ -82,7 +82,20 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $categories = Category::all();
+        $arrayUpdate = [
+            'title' => $request->title,
+            'content' => $request->content
+        ];
+        if($request->image != null){
+            $imageName = $request->image->store('posts');
+            $arrayUpdate = array_merge($arrayUpdate, [
+                'image' => $imageName
+            ]);
+        }
+        $post->update($arrayUpdate);
+
+        return redirect()->route('posts.edit', compact('post', 'categories'))->with('success', 'Votre post a ete modifiee');
     }
 
     /**
