@@ -7,10 +7,17 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+            @if (session('success'))
+                {{ sesion('success') }}
+            @endif
+
+            <div class="bg-white overflow-hidden show-sm sm:rounded-lg">
+                @foreach ($posts as $post )
+                <div class="flex items-center">
+                    <a href="{{ route('posts.edit', $post) }}" class="bg-yellow-500 px-2 py-3 blocl">Editer</a>
+                    <a href="{{ route('posts.destroy', $post) }}" class="bg-red-500 px-2 py-3 blocl">Supprimer</a>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
