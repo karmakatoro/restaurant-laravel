@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request;
 
@@ -19,7 +20,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('category', 'user')->latest()->get();
-        return view('posts.index', compact('posts'));
+        $categories = Category::all();
+        $users =  User::all();
+        return view('posts.index', compact('posts', 'categories', 'users'));
     }
 
     /**
